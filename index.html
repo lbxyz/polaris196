@@ -4,19 +4,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>POLARIS 196</title>
-  <meta name="description" content="POLARIS 196 — building things" />
   <style>
-    :root { --fg:#fff; --muted:rgba(255,255,255,0.75); }
+    :root { --fg:#fff; }
     * { box-sizing:border-box; }
     html,body { height:100%; margin:0; }
     body {
       background:#000 url("universe.jpeg") no-repeat center center fixed;
       background-size:cover;
       display:flex; justify-content:center; align-items:center;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      font-family: "Courier New", Courier, monospace;
       position:relative;
       color:var(--fg);
-      text-align:center;
       overflow:hidden;
     }
     body::before {
@@ -27,32 +25,68 @@
     }
     main {
       position:relative; z-index:1; padding:2rem;
-      opacity:0; transform: translateY(8px);
-      animation: riseIn 900ms cubic-bezier(.2,.6,.2,1) 150ms forwards;
+      font-size:1.4rem; color:var(--fg);
     }
-    h1 {
-      font-size:1.5rem;
-      font-weight:400;
-      letter-spacing:.08em;
-      margin:0;
-      text-rendering:optimizeLegibility;
+    .typewriter {
+      border-right: .15em solid var(--fg);
+      white-space: nowrap;
+      overflow: hidden;
+      display:inline-block;
+      animation: caret 0.75s steps(1) infinite;
     }
-    .tag {
-      font-size:1rem;
-      font-style:italic;
-      font-weight:300;
-      margin-top:.5rem;
-      color:var(--muted);
+    @keyframes caret {
+      0%, 100% { border-color: transparent }
+      50% { border-color: var(--fg) }
     }
     @keyframes fadeIn { from { opacity:0 } to { opacity:1 } }
-    @keyframes riseIn { from { opacity:0; transform: translateY(8px) } to { opacity:1; transform: translateY(0) } }
-    @media (prefers-reduced-motion: reduce) { body::before, main { animation: none; opacity:1; transform:none; } }
   </style>
 </head>
 <body>
   <main>
-    <h1>POLARIS 196</h1>
-    <div class="tag">building things</div>
+    <div id="typo" class="typewriter"></div>
   </main>
+
+  <script>
+    const el = document.getElementById("typo");
+    const text = "POLARIS 196";
+    const mistakeAt = 8; // after "POLARIS "
+    const mistakeChar = "9"; // wrong char
+    let i = 0;
+
+    function type() {
+      if (i < mistakeAt) {
+        el.textContent += text[i];
+        i++;
+        setTimeout(type, 150);
+      } else if (i === mistakeAt) {
+        // type wrong char
+        el.textContent += mistakeChar;
+        i++;
+        setTimeout(backspace, 500);
+      }
+    }
+
+    function backspace() {
+      el.textContent = el.textContent.slice(0, -1);
+      setTimeout(correct, 300);
+    }
+
+    function correct() {
+      el.textContent += text[mistakeAt];
+      i = mistakeAt + 1;
+      setTimeout(typeRest, 200);
+    }
+
+    function typeRest() {
+      if (i < text.length) {
+        el.textContent += text[i];
+        i++;
+        setTimeout(typeRest, 150);
+      }
+    }
+
+    // Start typing
+    setTimeout(type, 700);
+  </script>
 </body>
 </html>
