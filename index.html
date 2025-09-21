@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>POLARIS 196</title>
+  <link rel="icon" href="data:,"><!-- tiny placeholder favicon -->
+  <meta name="description" content="POLARIS 196 — building things?">
+  <style>
+    :root{--bg:#0b0d10;--fg:#e7edf3;--muted:#9aa7b2;}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--fg);
+      font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;
+      display:grid;
+      place-items:center;
+    }
+    main{ text-align:center; padding:4rem 1.5rem; }
+    h1{
+      font-size:clamp(2.5rem,8vw,8rem);
+      letter-spacing:.08em;
+      font-weight:800;
+      margin:0;
+    }
+    .tag{
+      font-style:italic;
+      font-size:clamp(1rem,3.2vw,1.5rem);
+      color:var(--muted);
+      margin-top:.75rem;
+    }
+    @media (prefers-color-scheme: light) {
+      :root{--bg:#fafcff;--fg:#0b0d10;--muted:#526071;}
+      body{background:var(--bg); color:var(--fg);}
+    }
+  </style>
+</head>
+<body>
+  <main role="main" aria-label="Landing">
+    <h1>POLARIS 196</h1>
+    <div class="tag">building things?</div>
+  </main>
+</body>
+</html>
